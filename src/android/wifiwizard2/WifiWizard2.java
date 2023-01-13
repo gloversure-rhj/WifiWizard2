@@ -495,7 +495,7 @@ public class WifiWizard2 extends CordovaPlugin {
         NetworkRequest nr = networkRequestBuilder1.build();
         ConnectivityManager cm = (ConnectivityManager) cordova.getActivity().getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         //timeout add because "No devices found" wasn't handled correct and doesn't throw Unavailable
-        cm.requestNetwork(nr, this.networkCallback, 15000);
+        cm.requestNetwork(nr, this.networkCallback, 40000);
       } else {
         // After processing authentication types, add or update network
         if(wifi.networkId == -1) { // -1 means SSID configuration does not exist yet
