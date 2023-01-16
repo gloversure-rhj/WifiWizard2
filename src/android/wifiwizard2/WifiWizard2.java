@@ -495,6 +495,7 @@ public class WifiWizard2 extends CordovaPlugin {
         NetworkRequest nr = networkRequestBuilder1.build();
         ConnectivityManager cm = (ConnectivityManager) cordova.getActivity().getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         //timeout add because "No devices found" wasn't handled correct and doesn't throw Unavailable
+        Log.d(TAG, "requesting network");
         cm.requestNetwork(nr, this.networkCallback, 40000);
       } else {
         // After processing authentication types, add or update network
@@ -1856,8 +1857,8 @@ public class WifiWizard2 extends CordovaPlugin {
           }
         }
       };
-
-      connectivityManager.requestNetwork(request, networkCallback);
+      Log.d(TAG, "4000");
+      connectivityManager.requestNetwork(request, networkCallback, 40000);
 
       // Only lollipop (API 21 && 22) use setProcessDefaultNetwork, API < 21 already does this by default
     } else if( API_VERSION >= 21 && API_VERSION < 23 ){
